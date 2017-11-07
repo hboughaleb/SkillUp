@@ -23,11 +23,15 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.new(review_params)
-     if @review.save
+    @review = @user_id
+  end
+
+  def update
+    @review = @review.user_id
+    if @review.update_attributes(review_params)
       redirect_to review_path(@review.user_id)
     else
-      render :new
+      render 'edit'
     end
   end
 
