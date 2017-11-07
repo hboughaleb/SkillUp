@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only [:show, :edit, :update, :destroy]
+  before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   def index
     @skills = Skill.all
@@ -23,6 +23,7 @@ class SkillsController < ApplicationController
   def update
     @skill.update(skill_params)
     redirect_to skill_path(@skill)
+  end
 
   def destroy
     @skill.destroy
