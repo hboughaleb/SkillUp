@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'skills/index'
-
-  get 'skills/show'
-
-  get 'skills/new'
-
-  get 'skills/edit'
-
   devise_for :users
   root to: 'pages#home'
 
