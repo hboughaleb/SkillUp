@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :set_user_id, only: [:edit, :show, :create]
+  before_action :set_user_id, only: [:edit, :show, :create, :index]
 
   def index
-    @review = Review.all
+    @review = Review.user_id.all
   end
 
   def show
