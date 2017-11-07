@@ -1,9 +1,15 @@
-<%= form_for(@skill) do |skill| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.submit %>
+<%= simple_form_for @skill, html: { class: "form-group"} do |f| %>
+  <% if @skill.errors.any? %>
+    <div id=“error_explanation”>
+      <ul>
+      <% @skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name, input_html: { placeholder: "photography, coding, math...", class: 'form-control' } %>
+  <%= f.input :description, input_html: { placeholder: "describe the skill...", class: 'form-control' } %>
+  <%= f.input :photo, as: :attachinary %>
+  <%= f.submit class: "btn btn-success" %>
 <% end %>
