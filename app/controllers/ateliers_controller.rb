@@ -25,7 +25,7 @@ class AteliersController < ApplicationController
   private
 
   def atelier_params
-    params.require(:atelier).permit(:date, :complted)
+    params.require(:atelier).permit(:date, :completed)
   end
    def set_user_id
    @user_id = User.find(params[:id])
