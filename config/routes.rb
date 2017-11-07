@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'reviews/show'
 
   get 'reviews/new'
 
   get 'reviews/edit'
 
+=======
+>>>>>>> 61ac64ca6f1fde37785cb0254e8d7202a95b1901
   devise_for :users
   root to: 'pages#home'
 
