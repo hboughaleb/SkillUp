@@ -15,7 +15,18 @@ class SkillsController < ApplicationController
   def edit
   end
 
+  def destroy
+  end
+
+  def update
+  end
+
+  def create
+  end
+
   private
+  def skill_params
+    params.require(:restaurant).permit(:name, )
   def set_skill
     @skill = Skill.find(params[:id])
   end
