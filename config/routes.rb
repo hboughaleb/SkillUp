@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'ateliers/index'
+
+  get 'ateliers/show'
+
   devise_for :users
   root to: 'pages#home'
 
