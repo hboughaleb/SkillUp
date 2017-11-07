@@ -30,11 +30,12 @@ class SkillsController < ApplicationController
   end
 
   private
-  def skill_params
-    params.require(:skill).permit(:name, :description)
-  end
 
   def set_skill
     @skill = Skill.find(params[:id])
+  end
+
+  def skill_params
+    params.require(:skill).permit(:name, :description, :photo)
   end
 end
