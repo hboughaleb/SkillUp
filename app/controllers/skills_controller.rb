@@ -27,6 +27,8 @@ class SkillsController < ApplicationController
   private
   def skill_params
     params.require(:restaurant).permit(:name, )
+  end
+
   def set_skill
     @skill = Skill.find(params[:id])
   end

@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  get 'skills/index'
+  get 'reviews/show'
 
-  get 'skills/show'
+  get 'reviews/new'
 
-  get 'skills/new'
-
-  get 'skills/edit'
+  get 'reviews/edit'
 
   devise_for :users
   root to: 'pages#home'
 
-  resources :skills, only: [:index, :show, :new, :create] do
+  resources :skills, only: [:index, :show, :new, :create, :edit] do
     resources :ateliers, only: [:show, :create, :new]
   end
   resources :users, only: [:index, :show, :new, :create, :update, :edit] do
