@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :set_user_id, only: [:edit, :show]
+  before_action :set_user_id, only: [:edit, :show, :create]
+
+  def index
+    @review = Review.all
+  end
 
   def show
     @review = Review.user_id
@@ -9,8 +13,17 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
-  def edit
+  def create
     @review = Review.update(review_params)
+    if @review.save
+      redirect_to review_path(@review.user_id)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @review = Review.new(review_params)
      if @review.save
       redirect_to review_path(@review.user_id)
     else
