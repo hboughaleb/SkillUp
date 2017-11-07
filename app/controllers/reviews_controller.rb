@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_user_id, only: [:edit, :show, :create, :index]
 
   def index
-    @review = Review.user_id.all
+    @review = Review.where(user_id: @user_id)
   end
 
   def show
@@ -40,8 +40,9 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:content, :rating)
   end
-   def set_user_id
-   @user_id = User.find(params[:id])
+
+  def set_user_id
+    @user_id = User.find(params[:id])
   end
 end
 
