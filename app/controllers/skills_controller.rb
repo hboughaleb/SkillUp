@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only [:show, :edit]
+  before_action :set_skill, only [:show, :edit, :update, :destroy]
 
   def index
     @skills = Skill.all
@@ -12,7 +12,21 @@ class SkillsController < ApplicationController
     @skill = Skill.new
   end
 
+  def create
+    Skill.create(restaurant_params)
+    redirect_to skills_path
+  end
+
   def edit
+  end
+
+  def update
+    @skill.update(skill_params)
+    redirect_to skill_path(@skill)
+
+  def destroy
+    @skill.destroy
+    redirect_to skills_path
   end
 
   private
