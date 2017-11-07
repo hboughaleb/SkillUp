@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = @review.user_id
-    if @review.update_attributes(review_params)
+    if @review.update_attribute(review_params).save
       redirect_to review_path(@review.user_id)
     else
       render 'edit'
