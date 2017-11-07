@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.update(review_params)
+    @review = Review.new(review_params)
     if @review.save
       redirect_to review_path(@review.user_id)
     else
