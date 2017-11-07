@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'reviews/show'
-
-  get 'reviews/new'
-
-  get 'reviews/edit'
-
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
   resources :skills, only: [:index, :show, :new, :create] do
@@ -15,5 +9,7 @@ Rails.application.routes.draw do
     resources :skills, only: [:new, :create]
     resources :reviews, only: [:show, :create, :new]
   end
+
+  mount Attachinary::Engine => "/attachinary"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
