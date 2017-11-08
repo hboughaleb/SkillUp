@@ -1,10 +1,8 @@
 <div class="profile_banner parallax">
   <div class="banner-content">
-    <% if @user.resume? %>
-      <div class="image-container">
-        <% image_tag current_user.photo, height: "150px" %>
-      </div>
-    <% end %>
+    <div class="image-container">
+      <% image_tag current_user.facebook_picture_url, height: "150px" %>
+    </div>
     <h1>
       <%= @user.first_name %> <%= @user.last_name %>
     </h1>
