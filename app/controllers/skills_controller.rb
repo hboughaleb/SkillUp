@@ -10,6 +10,8 @@ class SkillsController < ApplicationController
   end
 
   def show
+    @alert_message = "You are viewing #{@skill.name}"
+    @skill_coordinates = { lat: @skill.latitude, lng: @skill.longitude }
   end
 
   def new
