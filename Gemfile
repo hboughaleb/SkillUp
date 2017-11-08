@@ -17,7 +17,6 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'omniauth-facebook'
-gem 'faker'
 
 
 gem 'cloudinary', '1.1.7'
