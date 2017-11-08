@@ -6,8 +6,11 @@
 <% end %>
 </ul>
 
-<%= javascript_tag do %>
-  alert('<%= @alert_message %>');
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    const coord = <%= raw @skill_coordinates.to_json %>;
+    alert('Skill coordinates are ' + coord.lat + ', ' + coord.lng);
+  <% end %>
 <% end %>
 
 <!-- <p>Find me in app/views/skills/show.html.erb</p>

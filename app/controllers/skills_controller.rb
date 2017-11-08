@@ -7,9 +7,17 @@ class SkillsController < ApplicationController
     else
       @skills = Skill.all
     end
+
+    @hash = Gmaps4rails.build_markers(@skills) do |skill, marker|
+      marker.lat skill.user.latitude
+      marker.lng skill.user.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def show
+    @alert_message = "You are viewing #{@skill.name}"
+    @skill_coordinates = { lat: @skill.latitude, lng: @skill.longitude }
   end
 
   def new

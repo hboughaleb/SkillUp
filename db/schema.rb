@@ -40,7 +40,7 @@
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
+    t.string   "rating"
     t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at", null: false
