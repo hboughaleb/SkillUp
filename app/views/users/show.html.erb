@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render "shared/profile_banner" %>
+
+<div class="container">
+  <div class="row text-center">
+    <h1>
+      <%= @user.first_name %> <%= @user.last_name %>
+    </h1>
+  </div>
+
+  <% if @user.resume? %>
+    <div class="resume-container">
+      <%= @user.resume %>
+    </div>
+  <% end %>
+
+
+  <div class="cards-container">
+
+  </div>
+</div>
+
+<div class="row text-center">
+  <% current_user.skills.each do |skill| %>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+      <%= render "shared/card", skill: skill %>
+    </div>
+  <% end %>
+</div>

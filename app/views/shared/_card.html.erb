@@ -1,0 +1,10 @@
+<% if skill.photo %>
+  <div class="thumbnail text-center">
+    <img target ='<% skill_path(skill) %>' src="<%= cl_image_path skill.photo.path, height: 300, width: 400, :crop=>"fill" %>" alt="xxxx">
+    <%= link_to skill.name, skill_path(skill) %>
+  </div>
+<% else %>
+  <div class="card-header" style="background-image: url('https://images.unsplash.com/photo-1486597622250-f997d79907f8?auto=format&fit=crop&w=1502&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')">
+  </div>
+<% end %>
+
