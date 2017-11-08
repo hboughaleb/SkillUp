@@ -1,5 +1,5 @@
 class Skill < ApplicationRecord
-  has_many :users, through: :ateliers
+  belongs_to :user
   has_many :ateliers
   has_attachment :photo
   validates :name, presence: true, uniqueness: true

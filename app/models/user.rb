@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :reviews, dependent: :destroy
-  has_many :skills, through: :ateliers
+  has_many :skills
   has_many :ateliers
   has_attachment :photo
   validates :email, presence: true, uniqueness: true
