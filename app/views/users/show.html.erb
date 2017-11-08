@@ -2,9 +2,7 @@
 
 <div class="container">
   <div class="row text-center">
-    <h1>
-      <%= @user.first_name %> <%= @user.last_name %>
-    </h1>
+    <h1>Skills</h1>
   </div>
 
   <% if @user.resume? %>
@@ -15,14 +13,15 @@
 
 
   <div class="cards-container">
+    <div class="row text-center">
+      <% current_user.skills.each do |skill| %>
+      <div class="col-xs-12">
+        <%= render "shared/card", skill: skill %>
+      </div>
+      <% end %>
+    </div>
 
   </div>
 </div>
 
-<div class="row text-center">
-  <% current_user.skills.each do |skill| %>
-    <div class="col-xs-6 col-sm-4 col-md-3">
-      <%= render "shared/card", skill: skill %>
-    </div>
-  <% end %>
-</div>
+
