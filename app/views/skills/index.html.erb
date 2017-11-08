@@ -5,6 +5,9 @@
   <p><%= skill.description %></p>
 <% end %>
 
+<% if @skills.blank? %>
+  <h4>There are no skills matching your search <%= params[:search] %>.</h4>
+<% end %>
 
 
 <!-- <p>Find me in app/views/skills/index.html.erb</p>

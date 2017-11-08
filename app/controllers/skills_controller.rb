@@ -2,7 +2,11 @@ class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @skills = Skill.all
+    if params[:search]
+      @skills = Skill.where('name ILIKE ?', "%#{params[:search]}%")
+    else
+      @skills = Skill.all
+    end
   end
 
   def show
