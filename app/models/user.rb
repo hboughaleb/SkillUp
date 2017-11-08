@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :reviews, dependent: :destroy
   has_many :skills
-  has_many :ateliers, through: :skills
+  has_many :ateliers
   has_attachment :photo
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
