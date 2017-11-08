@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @user = User.all
+
     # look in query string for search params
     # if they exist filter users
     # otherwise, show all of them
