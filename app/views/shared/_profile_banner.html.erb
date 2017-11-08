@@ -1,0 +1,20 @@
+<div class="profile_banner parallax">
+  <div class="banner-content">
+    <% if @user.resume? %>
+      <div class="image-container">
+        <% image_tag current_user.photo, height: "150px" %>
+      </div>
+    <% end %>
+    <h1>
+      <%= @user.first_name %> <%= @user.last_name %>
+    </h1>
+    <% if @user.resume? %>
+      <div class="resume-container">
+        <%= @user.resume %>
+      </div>
+    <% end %>
+    <div class="text-center padded"><%= link_to "Add a new skill", new_user_skill_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
