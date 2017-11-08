@@ -1,14 +1,13 @@
-<h1>Skills#index</h1>
-
-<% @skills.each do |skill| %>
-  <h2><%= skill.name %></h2>
-  <p><%= skill.description %></p>
-<% end %>
-
-<% if @skills.blank? %>
-  <h4>There are no skills matching your search <%= params[:search] %>.</h4>
-<% end %>
-
-
-<!-- <p>Find me in app/views/skills/index.html.erb</p>
- -->
+<h1>Search Results</h1>
+<div class="container">
+  <div class="row">
+    <% @skills.each do |skill| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= render "shared/card", skill: skill %>
+      </div>
+      <% if @skills.blank? %>
+        <h4>There are no skills matching your search <%= params[:search] %>.</h4>
+      <% end %>
+    <% end %>
+  </div>
+</div>

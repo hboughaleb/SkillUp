@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user, only: [:show, :create, :new]
   def index
     if params[:search]
       @skills = Skill.where('name ILIKE ?', "%#{params[:search]}%")
@@ -14,11 +14,11 @@ class SkillsController < ApplicationController
 
   def new
     @skill = Skill.new
-    @user = User.find(params[:user_id])
   end
 
   def create
     @skill = Skill.new(skill_params)
+    @skill.user = current_user
     if @skill.save!
       redirect_to user_path(current_user)
     else
@@ -46,6 +46,10 @@ class SkillsController < ApplicationController
 
   def set_skill
     @skill = Skill.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   def skill_params
