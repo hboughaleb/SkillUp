@@ -10,19 +10,26 @@ class SkillsController < ApplicationController
 
   def new
     @skill = Skill.new
+    @user = User.find(params[:id])
   end
 
   def create
-    Skill.create(restaurant_params)
-    redirect_to skills_path
+    @skill = Skill.new(skill_params)
+    if @skill.save!
+      redirect_to skill_path(@skill)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @skill.update(skill_params)
-    redirect_to skill_path(@skill)
+    if @skill.update(skill_params)
+      redirect_to skill_path(@skill)
+    else
+      render :edit
   end
 
   def destroy
