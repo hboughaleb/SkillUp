@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :skills, only: [ :index ] do
+  resources :skills, only: [ :index, :show ] do
     resources :reviews, only: [:show, :create, :new]
   end
 
