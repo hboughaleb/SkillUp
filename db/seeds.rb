@@ -3,7 +3,7 @@ User.create!(
   password: "azertyuiop",
   first_name: "Toto",
   last_name: "T",
-  address: "5333 avenue Casgrain, Montréal"
+  address: "5333 avenue Casgrain, Montreal"
   )
 
 
@@ -12,7 +12,7 @@ User.create!(
   password: "azertyuiop",
   first_name: "Foo",
   last_name: "f",
-  address: "1234 boulevard Saint-Laurent, Montréal"
+  address: "1234 boulevard Saint Laurent, Montreal"
   )
 
 
@@ -21,7 +21,7 @@ User.create!(
   password: "azertyuiop",
   first_name: "Hello",
   last_name: "H",
-  address: "Complexe Desjardins, Montréal"
+  address: "Complexe Desjardins, Montreal"
   )
 
 
@@ -67,4 +67,3 @@ Skill.create!(
   description: "Make your body feel good"
   user_id: User.find_by(email: "hello@gmail.com").id
   )
-
