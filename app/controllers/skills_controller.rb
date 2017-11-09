@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :create, :new]
+  before_action :set_user, only: [:user_show, :create, :new]
   def index
     if params[:search]
       @skills = Skill.where('name ILIKE ?', "%#{params[:search]}%")
@@ -16,6 +16,13 @@ class SkillsController < ApplicationController
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@skill) do |skill, marker|
+      marker.lat skill.user.latitude
+      marker.lng skill.user.longitude
+    end
+  end
+
+  def user_show
     @hash = Gmaps4rails.build_markers(@skill) do |skill, marker|
       marker.lat skill.user.latitude
       marker.lng skill.user.longitude
