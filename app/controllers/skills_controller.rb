@@ -16,8 +16,10 @@ class SkillsController < ApplicationController
   end
 
   def show
-    @alert_message = "You are viewing #{@skill.name}"
-    @skill_coordinates = { lat: @skill.latitude, lng: @skill.longitude }
+    @hash = Gmaps4rails.build_markers(@skill) do |skill, marker|
+      marker.lat skill.user.latitude
+      marker.lng skill.user.longitude
+    end
   end
 
   def new
