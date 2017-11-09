@@ -4,7 +4,7 @@ class AteliersController < ApplicationController
   before_action :set_atelier, only: [:show]
 
   def new
-    @ateliers = ateliers.user
+    @atelier = Atelier.new
   end
 
   def index
