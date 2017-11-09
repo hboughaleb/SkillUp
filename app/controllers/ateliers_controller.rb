@@ -1,14 +1,15 @@
 class AteliersController < ApplicationController
   before_action :set_user, only: [:create, :index]
-  before_action :set_skill, only: [:create, :index, :new]
+  before_action :set_skill, only: [:create, :new]
   before_action :set_atelier, only: [:show]
 
   def new
-    @atelier = Atelier.new
+    @ateliers = ateliers.user
   end
 
   def index
-    @atelier = Atelier.user_id.all
+    @ateliers = Atelier.where('user_id = ?', "#{params[:user_id]}")
+
   end
 
   def create
