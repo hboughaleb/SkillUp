@@ -1,7 +1,8 @@
 <h1>Ateliers#index</h1>
 
 <% @ateliers.each do |atelier| %>
-  <h2><%= atelier.name %></h2>
-  <p><%= atelier.description %></p>
+  <h2><%= atelier.skill.name %></h2>
+  <p><%= atelier.user.first_name %> <%= atelier.user.last_name %></p>
 <% end %>
 
+<%= link_to 'Browse all skills', skills_path %>

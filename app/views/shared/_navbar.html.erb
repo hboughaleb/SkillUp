@@ -3,6 +3,7 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo_skill_up.png" %>
   <% end %>
+  <%= render "shared/search" %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -12,6 +13,7 @@
       <!-- Links when logged in -->
       <%= link_to "Explore Skills", skills_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Add a skill", new_user_skill_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My ateliers", user_ateliers_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
