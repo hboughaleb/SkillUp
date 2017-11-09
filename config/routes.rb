@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resources :skills, only: [:show, :new, :create ] do
       resources :ateliers, only: [:new, :create]
     end
+    resources :ateliers, only: [:index]
   end
 
-  resources :ateliers, only: [:show]
 
   resources :skills, only: [ :index ] do
     resources :reviews, only: [:show, :create, :new]
