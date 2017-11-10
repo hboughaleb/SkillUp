@@ -13,6 +13,7 @@ User.create!(
   first_name: "Foo",
   last_name: "f",
   address: "1234 boulevard Saint Laurent, Montreal"
+
   )
 
 
