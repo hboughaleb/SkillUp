@@ -30,8 +30,44 @@
         <% end %>
       <% end %>
     <% end %>
+
+    <% @my_ateliers.each do |atelier| %>
+      <% if atelier.skill.user == current_user %>
+        <% if atelier.completed == true %>
+          <h2><%= atelier.user.first_name %> has booked <%= atelier.skill.name %></h2>
+          <br>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+        <% elsif atelier.completed == false %>
+          <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %></h2>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+
+          <%= link_to "Confirm", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-success", method: :patch %>
+            <%= link_to "Refuse", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-danger", method: :delete %>
+        <% end %>
+
+      <% elsif atelier.user == current_user %>
+        <% if atelier.completed == true %>
+          <h2>Your atelier of <%= atelier.skill.name %> has been approved</h2>
+          <br>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+          <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}" %>
+        <% elsif atelier.completed == false %>
+          <h2>Your atelier of <%= atelier.skill.name %> has yet to be approved by <%= atelier.skill.user.first_name %></h2>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
 <!--     <ul class="inbox">
       <% @ateliers.each do |atelier| %>
         <li class="message">
