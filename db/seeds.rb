@@ -3,7 +3,7 @@ User.create!(
   password: "azertyuiop",
   first_name: "Toto",
   last_name: "T",
-  address: "5333 Casgrain, Montreal"
+  address: "5333 avenue Casgrain, Montreal"
   )
 
 
@@ -12,7 +12,8 @@ User.create!(
   password: "azertyuiop",
   first_name: "Foo",
   last_name: "f",
-  address: "1234 Boulevard Saint Laurent, Montreal"
+  address: "1234 boulevard Saint Laurent, Montreal"
+
   )
 
 
@@ -39,7 +40,7 @@ Skill.create!(
 
 Skill.create!(
   name: "Dog grooming",
-  description: "Spa for you dog"
+  description: "Spa for your dog"
   user_id: User.find_by(email: "toto@gmail.com").id
   )
 

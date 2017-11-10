@@ -6,3 +6,28 @@
 <% end %>
 
 <%= link_to 'Browse all skills', skills_path %>
+
+
+      <h1>Your Ateliers • Messages</h1>
+
+      <ul class="inbox">
+        <% @ateliers.each do |atelier| %>
+          <li class="message">
+            <img src="images/jad.png" alt="" class="avatar-large">
+            <div class="message-name">
+              <h3><%= atelier.user.first_name %> <%= atelier.user.last_name %></h3>
+              <p>atelier.date</p>
+            </div>
+            <div class="message-body">
+              <p><strong><%= atelier.skill.name %></strong></p>
+            </div>
+            <div class="message-status">
+              <p class="status declined"><%= atelier.completed %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </body>
+</html>

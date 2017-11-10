@@ -16,7 +16,7 @@ class AteliersController < ApplicationController
      @atelier = Atelier.new(atelier_params)
      @atelier.skill = @skill
     if @atelier.save
-      redirect_to atelier_path(@atelier)
+      redirect_to user_ateliers_path(current_user)
     else
       render :new
     end
