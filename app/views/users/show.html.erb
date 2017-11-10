@@ -15,9 +15,7 @@
   <div class="cards-container">
     <div class="row text-center">
       <% current_user.skills.each do |skill| %>
-      <div class="col-xs-12">
-        <%= render "shared/card" %>
-      </div>
+        <%= render "shared/card", skill: skill %>
       <% end %>
     </div>
 
