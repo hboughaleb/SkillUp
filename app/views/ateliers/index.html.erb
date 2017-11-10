@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Your Ateliers recap</h2>
+  <h2>Summary of Your Ateliers</h2>
 
   <div class="atelier-container">
     <%= link_to "Profile", user_path(current_user) %>
@@ -7,11 +7,11 @@
     <% @ateliers.each do |atelier| %>
       <% if atelier.skill.user == current_user %>
         <% if atelier.completed == true %>
-          <h2><%= atelier.user.first_name %> has booked <%= atelier.skill.name %></h2>
+          <h2><%= atelier.user.first_name %> has booked <%= atelier.skill.name %>.</h2>
           <br>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
         <% elsif atelier.completed == false %>
-          <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %></h2>
+          <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %>.</h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
           <%= link_to "Confirm", approve_path(atelier), class: "btn btn-success" %>
           <%= link_to "Refuse", "/users/#{current_user.id}/ateliers/#{atelier.id}", class: "btn btn-danger", method: :delete %>
@@ -19,12 +19,12 @@
 
       <% elsif atelier.user == current_user %>
         <% if atelier.completed == true %>
-          <h2>Your atelier of <%= atelier.skill.name %> has been approved</h2>
+          <h2>Your atelier, <%= atelier.skill.name %>, has been approved. Woop woop!</h2>
           <br>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
           <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}", class: "btn btn-alert"%>
         <% elsif atelier.completed == false %>
-          <h2>Your atelier of <%= atelier.skill.name %> has yet to be approved by <%= atelier.skill.user.first_name %></h2>
+          <h2><%= atelier.skill.name %> is still awaiting approval from the local expert, <%= atelier.skill.user.first_name %>.</h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
         <% end %>
       <% end %>
@@ -33,11 +33,11 @@
     <% @my_ateliers.each do |atelier| %>
       <% if atelier.skill.user == current_user %>
         <% if atelier.completed == true %>
-          <h2><%= atelier.user.first_name %> has booked <%= atelier.skill.name %></h2>
+          <h2><%= atelier.user.first_name %> has booked <%= atelier.skill.name %>.</h2>
           <br>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
         <% elsif atelier.completed == false %>
-          <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %></h2>
+          <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %>.</h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
 
           <%= link_to "Confirm", approve_path(atelier), class: "btn btn-success" %>
@@ -46,12 +46,12 @@
 
       <% elsif atelier.user == current_user %>
         <% if atelier.completed == true %>
-          <h2>Your atelier of <%= atelier.skill.name %> has been approved</h2>
+          <h2>Your atelier,<%= atelier.skill.name %>, has been approved. Holla!</h2>
           <br>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
           <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}", class: "btn btn-alert"%>
         <% elsif atelier.completed == false %>
-          <h2>Your atelier of <%= atelier.skill.name %> has yet to be approved by <%= atelier.skill.user.first_name %></h2>
+          <h2>The atelier you requested,<%= atelier.skill.name %>, is still awaiting approval from the local pro, <%= atelier.skill.user.first_name %>.</h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
         <% end %>
       <% end %>

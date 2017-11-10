@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Book an Atelier</h2>
+  <h2>Book an Atelier...</h2>
   <%= simple_form_for [@skill, @atelier], url: user_skill_ateliers_path, html: { class: "form-group"} do |f| %>
     <% if @atelier.errors.any? %>
       <div id=“error_explanation”>
@@ -11,7 +11,7 @@
       </div>
     <% end %>
     <div class="form-inputs">
-      <%= f.input :date, input_html: { placeholder: "When is your desired booking?", class: 'form-control' } %>
+      <%= f.input :date, input_html: { placeholder: "When's this going down?", class: 'form-control' } %>
     </div>
 
     <div class="form-actions">
