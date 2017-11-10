@@ -1,11 +1,38 @@
 <div class="container">
-  <h2>Atelier Message Centre</h2>
+  <h2>Your Ateliers recap</h2>
 
-  <div class="tabs">
-    <a href="#" class="tab active">Action Required</a>
-    <a href="#" class="tab">Completed</a>
+  <div class="atelier-container">
+    <%= link_to "Profile", user_path(current_user) %>
+
+    <% @ateliers.each do |atelier| %>
+      <% if atelier.skill.user == current_user %>
+        <% if atelier.completed == true %>
+          <h2><%= atelier.user.first_name %> has booked <%= atelier.skill.name %></h2>
+          <br>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+        <% elsif atelier.completed == false %>
+          <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %></h2>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+
+          <%= link_to "Confirm", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-success", method: :patch %>
+            <%= link_to "Refuse", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-danger", method: :delete %>
+        <% end %>
+
+      <% elsif atelier.user == current_user %>
+        <% if atelier.completed == true %>
+          <h2>Your atelier of <%= atelier.skill.name %> has been approved</h2>
+          <br>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+          <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}" %>
+        <% elsif atelier.completed == false %>
+          <h2>Your atelier of <%= atelier.skill.name %> has yet to be approved by <%= atelier.skill.user.first_name %></h2>
+          <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
-    <ul class="inbox">
+</div>
+<!--     <ul class="inbox">
       <% @ateliers.each do |atelier| %>
         <li class="message">
         <img src="https://picsum.photos/200/300/?gravity=east" alt="" class="avatar-large">
@@ -21,7 +48,7 @@
             <h4>Status</h4>
             <p class="status accepted">Pending</p>
           </div>
-        <!-- <li class="message">
+        <li class="message">
         <img src="https://picsum.photos/200/300/?gravity=east" alt="" class="avatar-large">
           <div class="message-name">
             <p><%= atelier.user.first_name %> <%= atelier.user.last_name %></p>
@@ -48,15 +75,15 @@
           <div class="message-status">
             <h4>Status</h4>
             <p class="status accepted">Pending</p>
-          </div> -->
+          </div>
         </li>
       <% end %>
     </ul>
   </div>
+ -->
 
-
-<div class="tabs">
+<!-- <div class="tabs">
   <a href="#" class="tab active"> Ready for more? </a>
   <a href="#" class="tab"><%= link_to 'Well, click here to browse all skills.', skills_path %></a>
 </div>
-
+ -->

@@ -8,7 +8,7 @@ class AteliersController < ApplicationController
   end
 
   def index
-    @ateliers = Atelier.where('user_id = ?', "#{params[:user_id]}")
+    @ateliers = Atelier.where('user_id = ?', current_user.id)
 
   end
 
@@ -23,6 +23,24 @@ class AteliersController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    @atelier = Atelier.find(params[:id])
+  end
+
+  def update
+    @atelier = Atelier.find(params[:id])
+    @atelier.update(atelier_params)
+    redirect_to atelier_path(@atelier)
+  end
+
+  def destroy
+    @atelier = atelier.find(params[:id])
+    @atelier.destroy
+
+    # no need for app/views/ateliers/destroy.html.erb
+    redirect_to ateliers_path
   end
 
   private
