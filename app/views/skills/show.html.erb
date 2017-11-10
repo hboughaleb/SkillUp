@@ -1,13 +1,12 @@
-<h1>Skills#show</h1>
 
-<ul>
-
+<div class="banner parallax" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/random');">
+  <div class="banner-content">
+    <h1 class="text-center"> looking for skillz in <%= @skill.name.downcase %>? </h1>
+    <h2 class="text-center"> here's how the local expert describes the experience:</h2>
+    <h3 class="text-center"><i><%= @skill.description.downcase %><i></h3>
+    <a class="btn-treehouse btn-lg">book it!</a>
+  </div>
+<div>
   <li><%= @skill.name%> | <%= @skill.description %></li>
 
-</ul>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
-
-
-<!-- <p>Find me in app/views/skills/show.html.erb</p>
- -->
