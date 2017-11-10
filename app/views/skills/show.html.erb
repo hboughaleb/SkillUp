@@ -10,7 +10,7 @@
     <h1 class="text-center"> looking for skillz in <%= @skill.name.downcase %>? </h1>
     <h2 class="text-center"> here's how the local expert describes the experience:</h2>
     <h3 class="text-center"><i><%= @skill.description.downcase %><i></h3>
-    <a href="/ateliers/new.html" class="btn-treehouse btn-lg">book it</a>
+    <%= link_to "book it", new_user_skill_atelier_path(current_user, @skill), class: "btn-treehouse btn-lg" %>
   </div>
 
 

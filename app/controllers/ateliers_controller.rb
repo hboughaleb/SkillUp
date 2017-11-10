@@ -1,7 +1,7 @@
 class AteliersController < ApplicationController
-  before_action :set_user, only: [:create, :index]
+  before_action :set_user, only: [:create, :index, :destroy]
   before_action :set_skill, only: [:create, :new]
-  before_action :set_atelier, only: [:show]
+  before_action :set_atelier, only: [:show, :edit, :update, :destroy, :approve]
 
   def new
     @atelier = Atelier.new
@@ -32,21 +32,24 @@ class AteliersController < ApplicationController
   end
 
   def edit
-    @atelier = Atelier.find(params[:id])
   end
 
   def update
-    @atelier = Atelier.find(params[:id])
     @atelier.update(atelier_params)
     redirect_to atelier_path(@atelier)
   end
 
   def destroy
-    @atelier = atelier.find(params[:id])
     @atelier.destroy
 
     # no need for app/views/ateliers/destroy.html.erb
-    redirect_to ateliers_path
+    redirect_to user_ateliers_path(@atelier)
+  end
+
+  def approve
+    @atelier.completed = true
+    @atelier.save!
+    redirect_to user_ateliers_path(current_user, @atelier)
   end
 
   private
