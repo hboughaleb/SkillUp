@@ -1,12 +1,16 @@
 
 <div class="banner parallax" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/random');">
   <div class="banner-content">
+    <% if @skill.user.facebook_picture_url? %>
+      <% avatar_url = @skill.user.facebook_picture_url || "http://placehold.it/30x30" %>
+    <% else %>
+      <% avatar_url = (cl_image_path @skill.user.photo.path)  || "http://placehold.it/30x30" %>
+    <% end %>
+    <%= image_tag avatar_url, class: "avatar-large" %>
     <h1 class="text-center"> looking for skillz in <%= @skill.name.downcase %>? </h1>
     <h2 class="text-center"> here's how the local expert describes the experience:</h2>
     <h3 class="text-center"><i><%= @skill.description.downcase %><i></h3>
     <a class="btn-treehouse btn-lg">book it!</a>
   </div>
-<div>
-  <li><%= @skill.name%> | <%= @skill.description %></li>
 
 
