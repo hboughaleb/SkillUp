@@ -1,10 +1,10 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path skill.photo.path, height: 300, width: 400, :crop=>"fill" %>);">
   <div class="card-category">Popular</div>
   <div class="card-description">
     <h2><%= skill.name %></h2>
     <p><%= skill.description %></p>
   </div>
-  <% avatar_url = skill.user.facebook_picture_url || "http://placehold.it/30x30" %>
+  <% avatar_url = skill.user.facebook_picture_url || skill.user.photo || "http://placehold.it/30x30" %>
   <%= image_tag avatar_url, class: "card-user" %>
   <%= link_to "", skill_path(skill), class: "card-link" %>
 </div>

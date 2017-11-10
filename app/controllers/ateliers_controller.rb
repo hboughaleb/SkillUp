@@ -1,6 +1,6 @@
 class AteliersController < ApplicationController
   before_action :set_user, only: [:create, :index]
-  before_action :set_skill, only: [:create, :index, :new]
+  before_action :set_skill, only: [:create, :new]
   before_action :set_atelier, only: [:show]
 
   def new
@@ -8,14 +8,15 @@ class AteliersController < ApplicationController
   end
 
   def index
-    @atelier = Atelier.user_id.all
+    @ateliers = Atelier.where('user_id = ?', "#{params[:user_id]}")
+
   end
 
   def create
      @atelier = Atelier.new(atelier_params)
      @atelier.skill = @skill
     if @atelier.save
-      redirect_to atelier_path(@atelier)
+      redirect_to user_ateliers_path(current_user)
     else
       render :new
     end

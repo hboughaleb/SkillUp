@@ -1,7 +1,12 @@
 <div class="profile_banner parallax">
   <div class="banner-content">
     <div class="image-container">
-      <% image_tag current_user.facebook_picture_url, height: "150px" %>
+      <% if current_user.facebook_picture_url? %>
+        <% image_tag current_user.facebook_picture_url, height: "150px" %>
+      <% else %>
+        <%= cl_image_tag current_user.photo.path, height: 300, width: 400, :crop=>"fill" %>
+      <% end %>
+
     </div>
     <h1>
       <%= @user.first_name %> <%= @user.last_name %>
