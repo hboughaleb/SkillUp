@@ -8,6 +8,9 @@ class AteliersController < ApplicationController
   end
 
   def index
+    # My_ateliers permet de recuperer les réservations qui me sont faites
+    @my_ateliers = Atelier.joins(:skill).where('skills.user_id = ?', current_user.id)
+    # ateliers permet de recuperer les réservations que j'ai faites
     @ateliers = Atelier.where('user_id = ?', current_user.id)
 
   end
@@ -15,6 +18,9 @@ class AteliersController < ApplicationController
   def create
      @atelier = Atelier.new(atelier_params)
      @atelier.skill = @skill
+     @atelier.user = current_user
+     @atelier.completed = false
+
     if @atelier.save
       redirect_to user_ateliers_path(current_user)
     else
