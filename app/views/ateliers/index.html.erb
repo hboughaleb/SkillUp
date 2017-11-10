@@ -13,9 +13,8 @@
         <% elsif atelier.completed == false %>
           <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %></h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
-
-          <%= link_to "Confirm", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-success", method: :patch %>
-            <%= link_to "Refuse", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-danger", method: :delete %>
+          <%= link_to "Confirm", approve_path(atelier), class: "btn btn-success" %>
+          <%= link_to "Refuse", "/users/#{current_user.id}/ateliers/#{atelier.id}", class: "btn btn-danger", method: :delete %>
         <% end %>
 
       <% elsif atelier.user == current_user %>
@@ -23,7 +22,7 @@
           <h2>Your atelier of <%= atelier.skill.name %> has been approved</h2>
           <br>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
-          <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}" %>
+          <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}", class: "btn btn-alert"%>
         <% elsif atelier.completed == false %>
           <h2>Your atelier of <%= atelier.skill.name %> has yet to be approved by <%= atelier.skill.user.first_name %></h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
@@ -41,8 +40,8 @@
           <h2><%= atelier.user.first_name %> would like to book <%= atelier.skill.name %></h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
 
-          <%= link_to "Confirm", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-success", method: :patch %>
-            <%= link_to "Refuse", "/skills/#{atelier.skill_id}/ateliers/#{atelier.id}", class: "btn btn-danger", method: :delete %>
+          <%= link_to "Confirm", approve_path(atelier), class: "btn btn-success" %>
+          <%= link_to "Refuse", user_atelier_path(@user, atelier), class: "btn btn-danger", method: :delete %>
         <% end %>
 
       <% elsif atelier.user == current_user %>
@@ -50,7 +49,7 @@
           <h2>Your atelier of <%= atelier.skill.name %> has been approved</h2>
           <br>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>
-          <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}" %>
+          <%= link_to "GO", "https://www.google.fr/maps/dir//#{atelier.skill.user.address}", class: "btn btn-alert"%>
         <% elsif atelier.completed == false %>
           <h2>Your atelier of <%= atelier.skill.name %> has yet to be approved by <%= atelier.skill.user.first_name %></h2>
           <p>Date: <%= atelier.date.strftime('%a %d %b %Y') %></p>

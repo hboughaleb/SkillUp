@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :skills, only: [:show, :new, :create, :edit, :update ] do
       resources :ateliers, only: [:new, :create]
     end
-    resources :ateliers, only: [:index]
+    resources :ateliers, only: [:index, :edit, :update, :destroy]
   end
 
+  get "atelier/approve/:id/", to: "ateliers#approve", as: 'approve'
 
   resources :skills, only: [ :index, :show ] do
     resources :reviews, only: [:show, :create, :new]
