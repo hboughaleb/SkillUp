@@ -1,18 +1,69 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create!(
+  email: "toto@gmail.com",
+  password: "azertyuiop",
+  first_name: "Toto",
+  last_name: "T",
+  address: "5333 Casgrain, Montreal"
+  )
 
-# 10.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
-#     email:  Faker::Internet.free_email
-#   )
-#   user.save!
-# end
 
+User.create!(
+  email: "foo@gmail.com",
+  password: "azertyuiop",
+  first_name: "Foo",
+  last_name: "f",
+  address: "1234 Boulevard Saint Laurent, Montreal"
+  )
+
+
+User.create!(
+  email: "hello@gmail.com",
+  password: "azertyuiop",
+  first_name: "Hello",
+  last_name: "H",
+  address: "Complexe Desjardins, Montreal"
+  )
+
+
+Skill.create!(
+  name: "Coding",
+  description: "HTML, CSS, Javascript"
+  user_id: User.find_by(email: "toto@gmail.com").id
+  )
+
+Skill.create!(
+  name: "Meditation",
+  description: "Yoga, zen classes"
+  user_id: User.find_by(email: "toto@gmail.com").id
+  )
+
+Skill.create!(
+  name: "Dog grooming",
+  description: "Spa for you dog"
+  user_id: User.find_by(email: "toto@gmail.com").id
+  )
+
+Skill.create!(
+  name: "Accounting",
+  description: "Pay less taxes"
+  user_id: User.find_by(email: "foo@gmail.com").id
+  )
+
+Skill.create!(
+  name: "Bartending",
+  description: "Learn to make perfect cocktails"
+  user_id: User.find_by(email: "foo@gmail.com").id
+  )
+
+Skill.create!(
+  name: "Cooking",
+  description: "Learn how to become a chef"
+  user_id: User.find_by(email: "foo@gmail.com").id
+  )
+
+
+Skill.create!(
+  name: "Fitness training",
+  description: "Make your body feel good"
+  user_id: User.find_by(email: "hello@gmail.com").id
+  )
